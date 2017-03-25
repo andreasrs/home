@@ -1,0 +1,40 @@
+{
+  "name": "home",
+  "version": "0.0.1",
+  "description": "andreasrs.com",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node lib/index.js",
+    "build": "npm run build:server && npm run build:client",
+    "build:client": "webpack",
+    "build:server": "babel src/server -d lib",
+    "lint": "eslint .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andreas Søvik <arsovik@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.2.0",
+    "koa-router": "^7.0.1",
+    "koa-static": "^3.0.0",
+    "normalize.css": "^5.0.0",
+    "nunjucks": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-preset-env": "^1.2.2",
+    "css-loader": "^0.27.3",
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb-base": "^11.1.1",
+    "eslint-plugin-import": "^2.2.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "node-sass": "^4.5.1",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.0",
+    "uglify-js": "^2.8.16",
+    "uglifyjs-webpack-plugin": "^0.3.1",
+    "webpack": "^2.3.1"
+  }
+}

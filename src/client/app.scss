@@ -1,0 +1,115 @@
+$bright: #fff;
+$dark: #000;
+$color1: rgba(37, 78, 123, 1);
+$color2: rgba(85, 132, 177, 1);
+$color3: rgba(133, 193, 229, 1);
+$color4: rgba(203, 226, 239, 1);
+$color5: rgba(248, 243, 234, 1);
+
+body {
+  background: $bright;
+  font-size: 28px;
+  font-family: 'Roboto', sans-serif;
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 18px;
+  }
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Roboto Condensed', sans-serif;
+}
+
+h1 {
+  font-size: 2.5em;
+  margin: 1.4 0 1.4em 0;
+}
+
+h2 {
+  font-size: 2em;
+  margin: 1.1em 0 1.1em 0;
+}
+
+p {
+  font-size: 1em;
+  margin: 1em 0 1em 0;
+}
+
+a, a:visited {
+  color: $color2;
+  text-decoration: none;
+}
+
+// navigation
+nav {
+  background: $color1;
+  border-bottom: 0.2em $color1 solid;
+
+  @media only screen and (min-width: 1024px) {
+    border-bottom: none;
+  }
+
+  ul {
+    color: $color3;
+    list-style-type: none;
+    margin: 0 auto 0 auto;
+    padding: 0;
+    width: 100%;
+
+    @media only screen and (min-width: 1024px) {
+      width: 70%;
+    }
+
+    a, a:visited {
+      color: $color5;
+    }
+
+    a:hover {
+      background: $color3;
+    }
+
+    li {
+      display: inline-block;
+      font-family: 'Roboto Condensed', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      width: 33.3%;
+
+      &.active {
+        background: $color2;
+        font-weight: bold;
+      }
+
+      a {
+        display: inline-block;
+        width: 100%;
+        font-size: 1.8em;
+        height: 2.5em;
+        line-height: 2.5em;
+      }
+    }
+  }
+}
+
+main {
+  width: 90%;
+  margin: 0 auto 0 auto;
+
+  @media only screen and (min-width: 1024px) {
+    width: 70%;
+  }
+}
+
+footer {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 0.8em;
+  margin: 2em 0 0 0;
+  padding: 2em 5% 2em 5%;
+  background: $color1;
+  color: $color5;
+
+  @media only screen and (min-width: 1024px) {
+    padding: 2em 15% 2em 15%;
+  }
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>andreasrs.com</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700|Roboto:300" rel="stylesheet">
+    {% if prod %}
+    <link rel="stylesheet" href="app.css" />
+    {% endif %}
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">About</a></li><li class="active"><a href="/projects">Projects</a></li><li><a href="/contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Projects</h1>
+
+        <h2>Products</h2>
+        <h3>Roc.js</h3>
+        <p>Techlead of responsible team and co-authored an ecosystem aimed at best-practice JavaScript applications. Focus on developer productivity.</p>
+        <h3>Schibsted Publishing Platform - Web SDK</h3>
+        <p>Contributor in a team that is building the next-generation Web SDK for Schibsted Publishing.</p>
+        <h3>VG+</h3>
+        <p>The biggest premium online news service in Norway. Techlead and main contributor spanning multiple years of new development and maintenance.</p>
+        <h3>VG Breaking News - Push infrastructure</h3>
+        <p>Technical platform for sending breaking news notifications to a large number of subscribers.</p>
+        <h3>Imbo - Python client</h3>
+        <p>Use Imbo (ImageBox) in your Python applications.</p>
+        <h3>Local newspaper migration</h3>
+        <p>Key contributor in ambitious project; moving over 30 local online newspapers to a Java-based platform.</p>
+
+        <h2>Publications</h2>
+        <h3>Modern JavaScript - an alternative approach</h3>
+        <p>A background behind the Roc.js initiative at Schibsted</p>
+        <h3>JavaScript: What the hell is this?</h3>
+        <p>A technical introduction to JavaScript</p>
+        <h3>Getting started with Varnish Cache</h3>
+        <p>A technical introduction to using Varnish cache</p>
+    </main>
+
+    <footer>
+        Andreas Rudi Søvik © - 2017
+    </footer>
+
+    <script src="app.js" async></script>
+</body>
+</html>
