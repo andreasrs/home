@@ -30,7 +30,10 @@ const config = {
                 test: /\.css|\.scss$/,
                 use: extractSass.extract({
                     use: [{
-                        loader: "css-loader" // translates CSS into CommonJS
+                        loader: "css-loader", // translates CSS into CommonJS
+                        options: {
+                            minimize: true
+                        }
                     }, {
                         loader: "sass-loader" // compiles Sass to CSS
                     }],
