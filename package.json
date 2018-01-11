@@ -4,7 +4,8 @@
   "description": "andreasrs.com",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node lib/index.js",
+    "start": "NODE_ENV=production node lib/index.js",
+    "dev": "NODE_ENV=development npm run build:server -- --watch & nodemon lib/index.js & npm run build:client -- --watch",
     "build": "npm run build:server && npm run build:client",
     "build:client": "webpack",
     "build:server": "babel src/server -d lib",
@@ -32,6 +33,7 @@
     "eslint-plugin-import": "^2.8.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "node-sass": "^4.7.2",
+    "nodemon": "^1.14.1",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "uglify-js": "^3.2.2",
