@@ -108,7 +108,7 @@ main {
   width: 100%;
   margin: 0 auto 0 auto;
   color: #000;
-  font-size: 0.7em;
+  font-size: 0.8em;
 
   figcaption {
     position: absolute;
@@ -128,7 +128,6 @@ main {
 
   @media only screen and (min-width: 1024px) {
     width: 70%;
-    font-size: 0.8em;
   }
 }
 
