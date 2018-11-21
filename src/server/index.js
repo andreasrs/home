@@ -23,6 +23,7 @@ router.get('/contact', ctx => ctx.body = contact);
 app.use(logger());
 app.use(async (ctx, next) => { ctx.response.set('max-age', cacheTime); await next() });
 app.use(serve(path.resolve(__dirname, '../www/assets'), { maxage: cacheTime * 1000 }));
+app.use(serve(path.resolve(__dirname, '../www/gfx'), { maxage: cacheTime * 1000 }));
 app.use(router.routes());
 app.use(router.allowedMethods());
 
