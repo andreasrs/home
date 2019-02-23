@@ -1,8 +1,8 @@
-FROM node:10.13.0-alpine
+FROM node:11.10.0-alpine
 
 RUN mkdir -p /src/app
 WORKDIR /src/app
-COPY package.json /src/app
+COPY package.json package-lock.json /src/app/
 RUN npm install
 
 COPY . /src/app

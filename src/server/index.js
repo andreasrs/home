@@ -7,7 +7,11 @@ import nunjucks from 'nunjucks';
 
 const app = new Koa();
 const router = new Router();
-const renderOpts = { prod: process.env.NODE_ENV !== 'development' };
+const content = {
+    year: new Date().getFullYear().toString()
+};
+
+const renderOpts = { prod: process.env.NODE_ENV !== 'development', content };
 
 nunjucks.configure(path.resolve(__dirname, '../www'));
 
