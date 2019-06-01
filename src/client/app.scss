@@ -3,8 +3,10 @@ $dark: #000;
 $color1: rgba(37, 78, 123, 1);
 $color2: rgba(85, 132, 177, 1);
 $color3: rgba(133, 193, 229, 1);
-//$color4: rgba(203, 226, 239, 1);
 $color5: rgba(248, 243, 234, 1);
+
+$topOffset: 102px;
+$topOffsetDesktop: 81px;
 
 body {
   background: $bright;
@@ -40,8 +42,8 @@ a, a:visited {
   text-decoration: none;
 }
 
-// navigation
 nav {
+  z-index: 1;
   background: $color1;
   border-bottom: 0.2em $color1 solid;
 
@@ -85,8 +87,13 @@ nav {
         display: inline-block;
         width: 100%;
         font-size: 1.8em;
-        height: 2.5em;
-        line-height: 2.5em;
+        height: $topOffset;
+        line-height: $topOffset;
+
+        @media only screen and (min-width: 1024px) {
+          height: $topOffsetDesktop;
+          line-height: $topOffsetDesktop;
+        }
       }
     }
   }
@@ -99,6 +106,27 @@ main {
 
   @media only screen and (min-width: 1024px) {
     width: 70%;
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: -$topOffset;
+  height: $topOffset;
+  transform: translateY($topOffset);
+  @media only screen and (min-width: 1024px) {
+    top: -$topOffsetDesktop;
+    transform: translateY($topOffsetDesktop);
+    height: $topOffsetDesktop;
+  }
+  width: 100%;
+  transition: transform 0.2s linear;
+}
+
+.sticky-follow {
+  padding-top: $topOffset;
+  @media only screen and (min-width: 1024px) {
+    padding-top: $topOffsetDesktop;
   }
 }
 
