@@ -8,7 +8,7 @@ import nunjucks from 'nunjucks';
 const app = new Koa();
 const router = new Router();
 const content = {
-    year: new Date().getFullYear().toString()
+  year: new Date().getFullYear().toString(),
 };
 
 const renderOpts = { prod: process.env.NODE_ENV !== 'development', content };
@@ -20,12 +20,12 @@ const index = nunjucks.render('index.html', renderOpts);
 const projects = nunjucks.render('projects.html', renderOpts);
 const contact = nunjucks.render('contact.html', renderOpts);
 
-router.get('/', ctx => ctx.body = index);
-router.get('/projects', ctx => ctx.body = projects);
-router.get('/contact', ctx => ctx.body = contact);
+router.get('/', (ctx) => { ctx.body = index; });
+router.get('/projects', (ctx) => { ctx.body = projects; });
+router.get('/contact', (ctx) => { ctx.body = contact; });
 
 app.use(logger());
-app.use(async (ctx, next) => { ctx.response.set('max-age', cacheTime); await next() });
+app.use(async (ctx, next) => { ctx.response.set('max-age', cacheTime); await next(); });
 app.use(serve(path.resolve(__dirname, '../www/assets'), { maxage: cacheTime * 1000 }));
 app.use(serve(path.resolve(__dirname, '../www/gfx'), { maxage: cacheTime * 1000 }));
 app.use(router.routes());
