@@ -32,12 +32,12 @@ const config = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              hmr: process.env.NODE_ENV !== 'production'
-            }
+              hmr: process.env.NODE_ENV !== 'production',
+            },
           },
           'css-loader',
-          'sass-loader'
-        ]
+          'sass-loader',
+        ],
       },
     ],
   },
@@ -45,17 +45,17 @@ const config = {
     new MiniCssExtractPlugin({
       filename: 'app.css',
       chunkFilename: 'app.[id].css',
-      ignoreOrder: false
-    })
+      ignoreOrder: false,
+    }),
   ],
   optimization: {
     minimize: true,
     minimizer: [
       new TerserPlugin({
         test: /\.js(\?.*)?$/i,
-      })
-    ]
-  }
+      }),
+    ],
+  },
 };
 
 module.exports = config;
