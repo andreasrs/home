@@ -1,14 +1,10 @@
 const path = require('path');
 
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-const extractSass = new ExtractTextPlugin({
-  filename: 'app.css',
-  disable: process.env.NODE_ENV === 'development',
-});
+const TerserPlugin = require('terser-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
+  mode: 'production',
   entry: './src/client/app.js',
   output: {
     filename: 'app.js',
@@ -22,7 +18,7 @@ const config = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [['env', {
+            presets: [['@babel/preset-env', {
               targets: {
                 browsers: ['last 2 versions'],
               },
@@ -32,27 +28,34 @@ const config = {
       },
       {
         test: /\.css|\.scss$/,
-        use: extractSass.extract({
-          use: [{
-            loader: 'css-loader', // translates CSS into CommonJS
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
             options: {
-              minimize: true,
-            },
-          }, {
-            loader: 'sass-loader', // compiles Sass to CSS
-          }],
-          fallback: 'style-loader',
-        }),
+              hmr: process.env.NODE_ENV !== 'production'
+            }
+          },
+          'css-loader',
+          'sass-loader'
+        ]
       },
     ],
   },
   plugins: [
-    extractSass,
+    new MiniCssExtractPlugin({
+      filename: 'app.css',
+      chunkFilename: 'app.[id].css',
+      ignoreOrder: false
+    })
   ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        test: /\.js(\?.*)?$/i,
+      })
+    ]
+  }
 };
-
-if (process.env.NODE_ENV !== 'development') {
-  config.plugins.push(new UglifyJSPlugin());
-}
 
 module.exports = config;
