@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -30,10 +31,7 @@ const config = {
         test: /\.css|\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hmr: process.env.NODE_ENV !== 'production',
-            },
+            loader: MiniCssExtractPlugin.loader
           },
           'css-loader',
           'sass-loader',
@@ -57,5 +55,9 @@ const config = {
     ],
   },
 };
+
+if (process.env.NODE_ENV !== 'production') {
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+}
 
 module.exports = config;
