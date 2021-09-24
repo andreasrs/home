@@ -1,7 +1,7 @@
-const config = require('./webpack.config');
+const config = require("./webpack.config");
 
 module.exports = {
   ...config,
-  mode: 'development',
+  mode: "development",
   optimization: undefined,
 };

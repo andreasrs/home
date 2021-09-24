@@ -1,15 +1,15 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require("path");
+const webpack = require("webpack");
 
-const TerserPlugin = require('terser-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require("terser-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const config = {
-  mode: 'production',
-  entry: './src/client/app.js',
+  mode: "production",
+  entry: "./src/client/app.js",
   output: {
-    filename: 'app.js',
-    path: path.resolve(__dirname, 'www/assets'),
+    filename: "app.js",
+    path: path.resolve(__dirname, "www/assets"),
   },
   module: {
     rules: [
@@ -17,13 +17,18 @@ const config = {
         test: /\.js$/,
         exclude: /(node_modules)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
-            presets: [['@babel/preset-env', {
-              targets: {
-                browsers: ['last 2 versions'],
-              },
-            }]],
+            presets: [
+              [
+                "@babel/preset-env",
+                {
+                  targets: {
+                    browsers: ["last 2 versions"],
+                  },
+                },
+              ],
+            ],
           },
         },
       },
@@ -31,18 +36,18 @@ const config = {
         test: /\.css|\.scss$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
           },
-          'css-loader',
-          'sass-loader',
+          "css-loader",
+          "sass-loader",
         ],
       },
     ],
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'app.css',
-      chunkFilename: 'app.[id].css',
+      filename: "app.css",
+      chunkFilename: "app.[id].css",
       ignoreOrder: false,
     }),
   ],
@@ -56,7 +61,7 @@ const config = {
   },
 };
 
-if (process.env.NODE_ENV !== 'production') {
+if (process.env.NODE_ENV !== "production") {
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 }
 
