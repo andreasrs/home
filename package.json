@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "NODE_ENV=production node lib/index.js",
-    "dev": "NODE_ENV=development npm run build:server -- --watch & nodemon lib/index.js & npm run build:client:dev -- --watch",
+    "dev": "cross-env NODE_ENV=development npm run build:server -- --watch & cross-env NODE_ENV=development nodemon lib/index.js & npm run build:client:dev -- --watch",
     "build": "npm run build:server && npm run build:client",
     "build:client": "webpack",
     "build:client:dev": "webpack --config webpack.dev.config.js",
@@ -29,6 +29,7 @@
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^3.5.3",
     "eslint": "^7.1.0",
     "eslint-config-airbnb-base": "^14.1.0",
