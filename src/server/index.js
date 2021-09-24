@@ -5,25 +5,34 @@ import serve from 'koa-static';
 import path from 'path';
 import nunjucks from 'nunjucks';
 
-const env = global.NODE_ENV;
+const env = process.env.NODE_ENV;
+const prod = env !== 'development';
+
 const app = new Koa();
 const router = new Router();
 const content = {
   year: new Date().getFullYear().toString(),
 };
 
-const renderOpts = { prod: process.env.NODE_ENV !== 'development', content };
+const renderOpts = { prod, content };
 
-nunjucks.configure(path.resolve(__dirname, '../www'));
+nunjucks.configure(path.resolve(__dirname, "../www"), {
+  noCache: !prod,
+});
 
-const cacheTime = 60 * 60;
-const index = nunjucks.render('index.html', renderOpts);
-const projects = nunjucks.render('projects.html', renderOpts);
-const contact = nunjucks.render('contact.html', renderOpts);
+const cacheTime = prod ? 60 * 60 : 0;
 
-router.get('/', (ctx) => { ctx.body = index; });
-router.get('/projects', (ctx) => { ctx.body = projects; });
-router.get('/contact', (ctx) => { ctx.body = contact; });
+router.get("/", (ctx) => {
+  ctx.body = nunjucks.render("index.html", renderOpts);
+});
+
+router.get("/projects", (ctx) => {
+  ctx.body = nunjucks.render("projects.html", renderOpts);
+});
+
+router.get("/contact", (ctx) => {
+  ctx.body = nunjucks.render("contact.html", renderOpts);
+});
 
 app.use(logger());
 app.use(async (ctx, next) => {
@@ -38,8 +47,10 @@ app.use(async (ctx, next) => {
   await next();
 });
 app.use(async (ctx, next) => { ctx.response.set('max-age', cacheTime); await next(); });
-app.use(serve(path.resolve(__dirname, '../www/assets'), { maxage: cacheTime * 1000 }));
-app.use(serve(path.resolve(__dirname, '../www/gfx'), { maxage: cacheTime * 1000 }));
+app.use(serve(path.resolve(__dirname, "../www/assets"), { maxage: cacheTime * 1000 }));
+app.use(
+  serve(path.resolve(__dirname, "../www/gfx"), { maxage: cacheTime * 1000 })
+);
 app.use(router.routes());
 app.use(router.allowedMethods());
 
