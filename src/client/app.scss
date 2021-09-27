@@ -1,15 +1,11 @@
-$bright: #fff;
-$dark: #000;
-$color1: rgba(37, 78, 123, 1);
-$color2: rgba(85, 132, 177, 1);
-$color3: rgba(133, 193, 229, 1);
-$color5: rgba(248, 243, 234, 1);
+@import "nord/src/sass/nord.scss";
 
 $topOffset: 102px;
 $topOffsetDesktop: 81px;
 
 body {
-  background: $bright;
+  background: $nord0;
+  color: $nord4;
   font-size: 28px;
   font-family: 'Lato', sans-serif;
 
@@ -19,6 +15,7 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
+  color: $nord7;
   font-weight: 400;
   font-family: 'Electrolize', sans-serif;
 }
@@ -39,14 +36,17 @@ p {
 }
 
 a, a:visited {
-  color: $color2;
-  text-decoration: none;
+  color: $nord8;
+}
+
+a:hover {
+  color: $nord14;
 }
 
 nav {
   z-index: 1;
-  background: $color1;
-  border-bottom: 0.2em $color1 solid;
+  background: $nord1;
+  border-bottom: 0.2em $nord2 solid;
   font-family: 'Electrolize', sans-serif;
 
   @media only screen and (min-width: 1024px) {
@@ -54,7 +54,7 @@ nav {
   }
 
   ul {
-    color: $color3;
+    color: $nord1;
     list-style-type: none;
     margin: 0 auto 0 auto;
     padding: 0;
@@ -65,11 +65,13 @@ nav {
     }
 
     a, a:visited {
-      color: $color5;
+      color: $nord8;
+      text-decoration: none;
     }
 
     a:hover {
-      background: $color3;
+      background: $nord8;
+      color: $nord0;
     }
 
     li {
@@ -80,7 +82,7 @@ nav {
       width: 33.3%;
 
       &.active {
-        background: $color2;
+        background: $nord2;
         font-weight: bold;
       }
 
@@ -135,8 +137,8 @@ footer {
   font-size: 0.8em;
   margin: 2em 0 0 0;
   padding: 2em 5% 2em 5%;
-  background: $color1;
-  color: $color5;
+  background: $nord1;
+  color: $nord6;
 
   @media only screen and (min-width: 1024px) {
     padding: 2em 15% 2em 15%;
