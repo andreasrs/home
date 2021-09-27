@@ -17,6 +17,8 @@
   "author": "Andreas Søvik <arsovik@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "@fontsource/electrolize": "^4.5.0",
+    "@fontsource/lato": "^4.5.0",
     "koa": "^2.12.0",
     "koa-logger": "^3.2.1",
     "koa-router": "^8.0.8",
@@ -35,6 +37,7 @@
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.20.0",
+    "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.0.0",
     "node-sass": "^6.0.1",
     "nodemon": "^2.0.4",
