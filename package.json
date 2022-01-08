@@ -4,28 +4,22 @@
   "description": "andreasrs.com",
   "main": "lib/index.js",
   "scripts": {
-    "start": "NODE_ENV=production node lib/index.js",
-    "dev": "cross-env NODE_ENV=development npm run build:server -- --watch & cross-env NODE_ENV=development nodemon lib/index.js & npm run build:client:dev -- --watch",
-    "build": "npm run build:server && npm run build:client",
+    "start": "serve",
+    "build": "npm run build:client",
     "build:client": "webpack",
     "build:client:dev": "webpack --config webpack.dev.config.js",
-    "build:server": "babel src/server -d lib",
     "lint": "eslint .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "rimraf lib www/assets"
+    "clean": "rimraf www/assets"
   },
   "author": "Andreas Søvik <arsovik@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "@fontsource/electrolize": "^4.5.0",
     "@fontsource/lato": "^4.5.0",
-    "koa": "^2.12.0",
-    "koa-logger": "^3.2.1",
-    "koa-router": "^8.0.8",
-    "koa-static": "^5.0.0",
     "nord": "^0.2.1",
     "normalize.css": "^7.0.0",
-    "nunjucks": "^3.2.1"
+    "serve": "^13.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -41,7 +35,6 @@
     "file-loader": "^6.2.0",
     "mini-css-extract-plugin": "^2.0.0",
     "node-sass": "^6.0.1",
-    "nodemon": "^2.0.4",
     "prettier": "^2.4.1",
     "rimraf": "^3.0.2",
     "sass-loader": "^12.1.0",
