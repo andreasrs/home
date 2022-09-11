@@ -104,6 +104,7 @@ nav {
 
 main {
   display: block;
+  position: relative;
   width: 90%;
   margin: 0 auto 0 auto;
 
@@ -111,7 +112,40 @@ main {
     width: 70%;
   }
 }
+.hero {
+  width: 110%;
+  margin-left: -5%;
+  @media only screen and (min-width: 1024px) {
+    width: 100%;
+    margin: 0;
+  }
+  height: auto;
+  position: relative;
 
+  .footer {
+    text-align: right;
+    font-size: 0.6em;
+    color: $nord7;
+    background: $nord1;
+    padding: 0.3rem;
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  img.sparkle {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    display: none;
+    animation: fadein 8s ease-in alternate infinite;
+  }
+}
 .sticky {
   position: fixed;
   top: -$topOffset;
@@ -143,4 +177,9 @@ footer {
   @media only screen and (min-width: 1024px) {
     padding: 2em 15% 2em 15%;
   }
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
