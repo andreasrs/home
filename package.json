@@ -19,7 +19,7 @@
     "@fontsource/lato": "^4.5.0",
     "nord": "^0.2.1",
     "normalize.css": "^7.0.0",
-    "serve": "^13.0.2"
+    "serve": "^14.1.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
