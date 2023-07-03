@@ -136,15 +136,6 @@ main {
     height: auto;
     object-fit: cover;
   }
-
-  img.sparkle {
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    display: none;
-    animation: fadein 8s ease-in alternate infinite;
-  }
 }
 .sticky {
   position: fixed;
